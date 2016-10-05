@@ -38,6 +38,10 @@ Open babywearing.github.io/_site/index.html in a browser.
 
 Run `make deploy` when you are happy with the changes to deploy to github pages. You can't do this unless you have the required permissions.
 
+## Write
+
+Be sure to follow [the basic Hakyll](https://jaspervdj.be/hakyll/tutorials/02-basics.html) guide to learn how to write posts.
+
 ## Stuck?
 
 If you get stuck trying to follow these steps, [open an issue](https://github.com/babywearing/babywearing/issues/new).
