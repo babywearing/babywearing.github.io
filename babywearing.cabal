@@ -1,0 +1,20 @@
+name:                babywearing
+version:             0.1.0.0
+synopsis:            Hakyll project template from stack
+description:         Please see README.md
+homepage:            https://github.com/TamaHobbit/babywearing#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Tama McGlinn
+maintainer:          t.mcglinn@gmail.com
+copyright:           MIT
+category:            Babywearing
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable babywearing
+  main-is:             site.hs
+  default-language:    Haskell2010
+  ghc-options:         -threaded
+  build-depends:       base == 4.*,
+                       hakyll == 4.7.*
