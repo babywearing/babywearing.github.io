@@ -1,3 +1,6 @@
+site:
+	stack build
+
 build:
 	stack exec babywearing build
 
