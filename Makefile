@@ -6,5 +6,5 @@ build:
 
 deploy:
 	make build
-	cd _site && git commit -a -m "Built on `date` from `cd .. && git rev-parse HEAD`" && git push
+	cd _site && git add . && git commit -m "Built on `date` from `cd .. && git rev-parse HEAD`" && git push
 	git commit -a -m "Added build" && git push
