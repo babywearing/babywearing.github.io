@@ -7,11 +7,15 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "images/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
     match "icons/*" $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "images/*" $ do
+    match "js/*" $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -19,13 +23,22 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.md", "contact.md", "safety.md"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+    match "*.html" $ do
+        route   idRoute
+        compile $ do
+            getResourceBody
+            >>= loadAndApplyTemplate "templates/static.html" postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    match "*.md" $ do
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/static.html" postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
+    match "posts/*.md" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -53,7 +66,7 @@ main = hakyll $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
+                    constField "title" "Babywearing Kiwi"         `mappend`
                     defaultContext
 
             getResourceBody
@@ -69,4 +82,3 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
     defaultContext
-
