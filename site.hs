@@ -23,7 +23,7 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "*.html" $ do
+    match "static-html/*.html" $ do
         route   idRoute
         compile $ do
             getResourceBody
@@ -31,7 +31,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
-    match "*.md" $ do
+    match "static-md/*.md" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/static.html" postCtx
