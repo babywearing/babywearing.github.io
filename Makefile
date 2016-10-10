@@ -2,6 +2,7 @@ site:
 	stack build
 
 build:
+	rm _site/* -rf
 	rm -r _cache/
 	stack exec babywearing build
 
