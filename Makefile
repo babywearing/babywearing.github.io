@@ -4,7 +4,7 @@ site:
 build:
 	rm _site/* -rf
 	rm -rf _cache/
-	stack exec babywearing build
+	stack exec website build
 
 deploy:
 	cd _site && git checkout -- . && git clean -df
