@@ -3,7 +3,7 @@ site:
 
 build:
 	rm _site/* -rf
-	rm -r _cache/
+	rm -rf _cache/
 	stack exec babywearing build
 
 deploy:
